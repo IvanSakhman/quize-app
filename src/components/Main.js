@@ -6,9 +6,14 @@ import QuestionsInfo from './main/QuestionsInfo';
 import Loader from './main/Loader';
 import SkipQuestion from './main/SkipQuestion';
 import AnswerBuilding from './main/AnswerBuilding';
-import AswerProposition from './main/AnswerProposition';
+import AnswerProposition from './main/AnswerProposition';
 
-import { fetchQuestion, incrementQuestionsCount } from '../actions/question';
+import {
+    fetchQuestion,
+    incrementQuestionsCount,
+    characterRelocationToBoard,
+    characterRelocationFromBoard
+} from '../actions/question';
 
 class Main extends Component {
     componentWillMount() {
@@ -16,7 +21,6 @@ class Main extends Component {
     }
 
     render() {
-        console.log(`counter: ${this.props.totalCount}`);
         return (
             <div className="main">
                 { this.props.question ? (
@@ -30,6 +34,12 @@ class Main extends Component {
                         <SkipQuestion
                             fetchQuestion={this.props.fetchQuestion}
                             incrementQuestionsCount={this.props.incrementQuestionsCount}/>
+                        <AnswerBuilding
+                            characters={this.props.arrayBoard}
+                            characterRelocationFromBoard={this.props.characterRelocationFromBoard}/>
+                        <AnswerProposition
+                            characters={this.props.arrayProposition}
+                            characterRelocationToBoard={this.props.characterRelocationToBoard}/>
                     </div>
                 ) :
                     <Loader />
@@ -42,8 +52,18 @@ class Main extends Component {
 function mapStateToProps(state) {
     return {
         question: state.questions.question,
-        totalCount: state.questions.totalCount
+        totalCount: state.questions.totalCount,
+        arrayProposition: state.questions.arrayProposition,
+        arrayBoard: state.questions.arrayBoard
     }
 }
 
-export default connect(mapStateToProps, { fetchQuestion, incrementQuestionsCount })(Main);
+export default connect(
+    mapStateToProps,
+    {
+        fetchQuestion,
+        incrementQuestionsCount,
+        characterRelocationToBoard,
+        characterRelocationFromBoard
+    }
+)(Main);
