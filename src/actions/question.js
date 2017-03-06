@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_QUESTION } from '../constants/questions';
+import { FETCH_QUESTION, INCREMENT_QUESTIONS_COUNT } from '../constants/questions';
 
 export function fetchQuestion() {
     return function(dispatch) {
@@ -10,7 +10,8 @@ export function fetchQuestion() {
                 const data = {
                     id: questionObj.id,
                     answer: questionObj.answer,
-                    description: questionObj.question
+                    description: questionObj.question,
+                    category: questionObj.category.title
                 };
                 console.log(data);
 
@@ -19,5 +20,13 @@ export function fetchQuestion() {
                     payload: data
                 })
             })
+    }
+}
+
+export function incrementQuestionsCount() {
+    return function (dispatch) {
+        dispatch({
+            type: INCREMENT_QUESTIONS_COUNT
+        })
     }
 }

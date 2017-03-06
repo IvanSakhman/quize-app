@@ -12,7 +12,7 @@ export default class ActivityLog extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="totalQuestions">
-                            Total Questions: 0
+                            Total Questions: {this.props.totalCount}
                         </div>
                     </div>
                 </div>
