@@ -1,0 +1,13 @@
+.progressMessage {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+
+  .successMessage {
+    color: #39ff55;
+  }
+
+  .failMessage {
+    color: #D6454A;
+  }
+}

@@ -4,7 +4,10 @@ import {
     FETCH_QUESTION,
     INCREMENT_QUESTIONS_COUNT,
     RELOCATE_FROM_PROPOSITION_TO_BOARD,
-    RELOCATE_FROM_BOARD_TO_PROPOSITION
+    RELOCATE_FROM_BOARD_TO_PROPOSITION,
+    CHECK_ANSWER,
+    INCREMENT_CORRECT_QUESTIONS_COUNT
+
 } from '../constants/questions';
 
 import { charactersTransform, randomizeItem } from '../helpers/answerTransformation';
@@ -14,7 +17,6 @@ export function fetchQuestion() {
         return axios.get('http://jservice.io/api/random')
             .then(response => {
                 const questionObj = response.data[0];
-                charactersTransform(questionObj.answer);
                 const data = {
                     id: questionObj.id,
                     answer: questionObj.answer,
@@ -53,6 +55,22 @@ export function characterRelocationFromBoard(character) {
         dispatch({
             type: RELOCATE_FROM_BOARD_TO_PROPOSITION,
             payload: character
+        })
+    }
+}
+
+export function checkAnswer() {
+    return function(dispatch) {
+        dispatch({
+            type: CHECK_ANSWER
+        })
+    }
+}
+
+export function incrementCorrectQuestionsCount() {
+    return function(dispatch) {
+        dispatch({
+            type: INCREMENT_CORRECT_QUESTIONS_COUNT
         })
     }
 }

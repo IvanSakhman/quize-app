@@ -1,8 +1,8 @@
-.skipQuestion {
+.continueQuiz {
   margin: 20px auto;
   padding: 5px;
   text-align: center;
-  background-color: #30be5f;
+  background-color: #14acbe;
   color: #fff;
   max-width: 200px;
   border-radius: 10px;
@@ -10,5 +10,6 @@
 
   &:hover {
     background-color: #5dff57;
+    cursor: pointer;
   }
 }

@@ -1,6 +1,6 @@
 export const charactersTransform = (answer) => {
     let objArray = [];
-    for (let i =0; i < answer.length; i++) {
+    for (let i = 0; i < answer.length; i++) {
         objArray.push({ id: i, name: answer[i]});
     }
 
@@ -21,3 +21,13 @@ export const randomizeItem = (array) => {
 
     return array;
 };
+
+export function charactersToString(objArray) {
+    let str = '';
+
+    for (let i = 0; i < objArray.length; i++) {
+        str = str + objArray[i]['name'];
+    }
+
+    return str;
+}

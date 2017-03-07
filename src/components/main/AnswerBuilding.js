@@ -11,6 +11,16 @@ class AnswerBuilding extends Component {
         this.props.characterRelocationFromBoard(character);
     }
 
+    giveStyle() {
+        if ( this.props.answerCondition === true ) {
+            return 'successAnswer';
+        } else if ( this.props.answerCondition == false ){
+            return 'failAnswer';
+        } else {
+            return null;
+        }
+    }
+
     showItem(characters) {
         return (
             characters.map(character =>
@@ -27,7 +37,7 @@ class AnswerBuilding extends Component {
     render() {
         return (
             <div className="answerBuilding">
-                <div className="answerContainer">
+                <div className={`answerContainer ${this.giveStyle()}`}>
                     <div className="charactersPlace">
                         <ul className="inlineList">
                             {this.showItem(this.props.characters)}

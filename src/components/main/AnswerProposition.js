@@ -11,6 +11,7 @@ class AnswerBuilding extends Component {
 
     receiveCharacter(character) {
         this.props.characterRelocationToBoard(character);
+        this.props.checkAnswer();
     }
 
     showItem(characters) {
