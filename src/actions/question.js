@@ -7,7 +7,7 @@ import {
     RELOCATE_FROM_BOARD_TO_PROPOSITION
 } from '../constants/questions';
 
-import { charactersTransform } from '../helpers/answerTransformation';
+import { charactersTransform, randomizeItem } from '../helpers/answerTransformation';
 
 export function fetchQuestion() {
     return function(dispatch) {
@@ -20,7 +20,7 @@ export function fetchQuestion() {
                     answer: questionObj.answer,
                     description: questionObj.question,
                     category: questionObj.category.title,
-                    answerTransformed: charactersTransform(questionObj.answer)
+                    answerTransformed: randomizeItem(charactersTransform(questionObj.answer))
                 };
                 console.log(data);
                 dispatch({
